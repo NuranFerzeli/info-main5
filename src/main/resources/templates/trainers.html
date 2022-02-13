@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<title th:text="#{page.title}"></title>
+<meta content="MACode ID, https://macodeid.com/" name="copyright">
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+<link href="assets/css/maicons.css" rel="stylesheet">
+
+<link href="assets/vendor/animate/animate.css" rel="stylesheet">
+
+<link href="assets/vendor/owl-carousel/css/owl.carousel.css" rel="stylesheet">
+
+<link href="assets/css/theme.css" rel="stylesheet">
+
+<!-- Required meta tags -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="js/jquery.i18n.properties.js" type="text/javascript"></script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+<link href="/absnews/24-news/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet">
+<link href="/absnews/24-news/css/animate.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="/absnews/24-news/css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+<link href="/absnews/24-news/css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+<!-- Bootstrap CSS -->
+<link href="/absnews/24-news/css/style_1.css" rel="stylesheet" type="text/css"/>
+<!-- Modernizr JS -->
+<script src="/absnews/24-news/js/modernizr-3.5.0.min.js"></script>
+</head>
+
+<body>
+
+<!-- Back to top button -->
+<div class="back-to-top "></div>
+<div class="top-bar">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="d-inline-block">
+                    <span class="mai-mail fg-primary"></span> <a href="mailto:contact@mail.com"
+                                                                 th:text="#{title.email}"></a>
+                </div>
+                <div class="d-inline-block ml-2">
+                    <span class="mai-call fg-primary"></span> <a href="tel:+0011223495" th:text="#{title.number}"></a>
+                </div>
+            </div>
+            <div class="col-md-4 text-right d-none d-md-block">
+                <div class="social-mini-button">
+                    <a href="https://www.facebook.com/NaxcivanMRKARETEDO/"><span class="mai-logo-facebook-f"></span></a>
+                    <a href="https://www.instagram.com/karate_naxcivan/"><span class="mai-logo-instagram"></span></a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .top-bar -->
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="/"><span th:text="#{title.one}"></span><span class="text-primary"
+                                                                                   th:text="#{title.two}"></span></a>
+
+        <button aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-target="#navbarContent" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto pt-3 pt-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/" th:text="#{menu.first}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sports?start=0&fetchCount=10" th:text="#{menu.sportmen}"></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/trainers?start=0&fetchCount=10 " th:text="#{menu.trainer}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/federation" th:text="#{menu.federation}"></a>
+                </li>
+            </ul>
+        </div>
+    </div> <!-- .container -->
+</nav> <!-- .navbar -->
+<div class="container-fluid pb-4 pt-4 paddding">
+    <div class="container paddding">
+        <div class="row mx-0">
+            <div class="col-md-10 animate-box" data-animate-effect="fadeInLeft">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4" th:text="#{menu.trainer}">
+                    </div>
+                </div>
+                <form action="/trainer?name=" method="get">
+                    <div class="input-group mb-3">
+                        <input aria-describedby="basic-addon2" aria-label="Recipient's username" class="form-control" name="name"
+                               placeholder="Məşqçinin adını daxil edin...." type="text">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit">Axtar</button>
+                        </div>
+                    </div>
+                </form>
+                <div th:each="trainer:${trainers}" th:if="${not #lists.isEmpty(trainers) }">
+                    <div class="row pb-4">
+                        <div class="col-md-5">
+                            <div class="fh5co_hover_news_img">
+                                <div class="fh5co_news_img"><img alt="" th:src="@{${'/photos/' + trainer.getImageName()}}"/></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 animate-box">
+                            <a class="fh5co_magna py-2" href="newsPage.html"> <span
+                                    th:text="${trainer.getName()}"></span></a> <a class="fh5co_mini_time py-3"
+                                                                                  href="#"> </a>
+                            <div class="fh5co_consectetur"><span th:text="${trainer.getDetailedInformation()}"> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="row mx-0">
+    <div class="col-12  text-center pb-4 pt-4">
+        <div class="btn-group mr-2" th:if="${disable2}">
+            <button class="btn btn-primary mb-2" id="previous" type="button">
+                <span>Əvvəlki</span></button>
+            <div th:if="${disable}">
+                <button class="btn btn-secondary mb-2" id="next" type="button"><span>Növbəti</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<footer th:if="${disable2}">
+    <div class="container-fluid fh5co_footer_right_reserved">
+
+        <div class="container">
+            <div class="row  ">
+                <div class="col-12 col-md-6 py-4 Reserved"><span th:text="#{title.one}"></span>&nbsp;<span
+                        th:text="#{title.two}"></span></div>
+                <div class="col-12 col-md-6 spdp_right py-4">
+                    <a class="footer_last_part_menu" href="/"><span th:text="#{menu.first}"></span></a>
+                    <a class="footer_last_part_menu" href="/sports?start=0&fetchCount=15"><span
+                            th:text="#{menu.sportmen}"></span></a>
+                    <a class="footer_last_part_menu" href="/trainers?start=0&fetchCount=15"><span
+                            th:text="#{menu.trainer}"></span></a>
+                    <a class="footer_last_part_menu" href="/federation"><span th:text="#{menu.federation}"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="gototop js-top">
+    <a class="js-gotop" href="#"><i class="fa fa-arrow-up"></i></a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/absnews/24-news/js/owl.carousel.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+<script crossorigin="anonymous"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="/absnews/24-news/js/jquery.waypoints.min.js"></script>
+<!-- Main -->
+<script src="/absnews/24-news/js/main.js"></script>
+<script src="assets/js/trainers.js"></script>
+
+</body>
+</html>
